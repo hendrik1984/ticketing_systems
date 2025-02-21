@@ -1,0 +1,24 @@
+<h1>Register for a Ticket</h1>
+
+<%= form_with model: @ticket, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%#= form.label :email %>
+    <%= form.hidden_field :status, :value => 'pending' %>
+  </div>
+
+
+
+  <div>
+    <%= form.submit 'Register' %>
+  </div>
+<% end %>
