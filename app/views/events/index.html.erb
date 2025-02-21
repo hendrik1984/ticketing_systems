@@ -1,0 +1,17 @@
+<h1>Upcoming Events</h1>
+
+<%= link_to 'New Event', new_event_path %>
+
+<% @events.each do |event| %>
+  <div>
+    <h2><%= event.name %> (Available tickets: <%= event.max_allocation - event.tickets.count %>)</h2>
+    <p><%= event.description %></p>
+    <%#= image_tag event.banner_image if event.banner_image.present? %>
+    <p>Status: <%= event.status.capitalize %></p>
+    <p>Max Allocation: <%= event.max_allocation %></p>
+    <%= link_to 'Show', event_path(event) %> |
+    <%= link_to 'Edit', edit_event_path(event) %> |
+    <%= link_to 'Delete', event_path(event), method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %> |
+    <%= link_to 'Register', new_event_ticket_path(event) %>
+  </div>
+<% end %>

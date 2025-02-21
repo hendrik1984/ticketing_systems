@@ -1,6 +1,6 @@
-<h1>Register for a Ticket</h1>
+<h1>Register for a Ticket for <%= @event.name %></h1>
 
-<%= form_with model: @ticket, local: true do |form| %>
+<%= form_with model: [@event, @ticket], local: true do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -12,7 +12,6 @@
   </div>
 
   <div>
-    <%#= form.label :email %>
     <%= form.hidden_field :status, :value => 'pending' %>
   </div>
 
