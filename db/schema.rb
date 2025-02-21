@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_21_082613) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_21_093235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "banner_image"
+    t.string "status", default: "inactive", null: false
+    t.integer "max_allocation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_events_on_status"
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.string "name"
@@ -20,5 +31,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_21_082613) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
   end
 end
