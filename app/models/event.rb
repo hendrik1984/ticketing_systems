@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     has_many :tickets, dependent: :destroy
+    has_one_attached :banner_image
 
     validates :name, presence: true
     validates :description, presence: true

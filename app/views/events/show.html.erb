@@ -1,6 +1,6 @@
 <h1><%= @event.name %></h1>
 <p><%= @event.description %></p>
-<%#= image_tag @event.banner_image if @event.banner_image.present? %>
+<%= image_tag @event.banner_image, :width => "25%" if @event.banner_image.present? %>
 <p>Status: <%= @event.status.capitalize %></p>
 <p>Max Allocation: <%= @event.max_allocation %></p>
 
